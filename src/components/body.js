@@ -5,6 +5,9 @@ import Skeleton from "./skeleton";
 import { useEffect, useState } from "react";
 import useNetworkStatus from "../utils/useNetworkStatus";
 import { withPromotedLabel } from "./rest-card";
+import { useContext } from "react";
+import userLogin from "../utils/userLogin";
+
 
 const Body = () => {
   const [listofRestaurent, setlistofRestaurent] = useState([]);
@@ -56,7 +59,8 @@ const Body = () => {
   // Here , we can render skeleton of the cards or restaurents for better experience for the users //
   // we also call this Conditional Rendering
   const NetworkStatus=useNetworkStatus();
-
+  const {userName,setuserName}=useContext(userLogin);
+ 
   if(NetworkStatus===false) {
     return(
       <h1>You are offline ! ⚠️ </h1>
@@ -73,8 +77,9 @@ const Body = () => {
           <input
             type="text"
             className="search-bar"
-            value={search_text}
+            // value={userName}
             placeholder="Search a restaurent"
+            
             onChange={(e) => {
                 console.log(e.target.value);
                 setsearch_text(e.target.value);
@@ -83,10 +88,19 @@ const Body = () => {
             }}
           />
           <button onClick={search}><i className="bi bi-search"></i></button>
+          
         </div>
         <button className="sort-btn" onClick={sort}>
           sort by rating
         </button>
+
+        <label className="px-4">set username</label>
+        <input onChange={(e)=>
+          setuserName(e.target.value)
+        }/>
+        
+        
+
       </div>
       <div className="flex flex-wrap gap-8 justify-between resto-cont">
         {filteredRestaurent.map((it) => (

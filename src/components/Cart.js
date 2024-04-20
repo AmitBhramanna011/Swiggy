@@ -1,32 +1,14 @@
+import { useSelector } from "react-redux";
+import ShowCartItems from "./showCartItems";
 
-import { useLocation } from "react-router-dom";
-
-const Cart = () => {
-  const location = useLocation();
-  // const { items } = location.state || { items: [] }; // Extract items from location state or use empty array as default
-  const items = location.state.items; 
+const Cart=()=>{
+  const cartItems=useSelector((store)=>store.cart.items);
+  console.log(cartItems)
   return (
-    <div>
-      <h2>Cart: {items.length}</h2>
-      <ul>
-        {items.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
-      </ul>
-    </div>
+    
+     <ShowCartItems cartItems={cartItems}></ShowCartItems>
+    
+
   );
-};
-
-const CartItem = ({ item }) => {
-  const { id, name, price } = item;
-
-  return (
-    <li key={id}>
-      <p>Name: {name}</p>
-      <p>Price: ₹{price}</p>
-      {/* Add more item details as needed */}
-    </li>
-  );
-};
-
+}
 export default Cart;

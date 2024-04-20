@@ -81,16 +81,9 @@ const Resto_menu=()=>{
         it.card?.["card"]?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
     console.log(CategoryMenu)
-    const addItemToCart = (item) => {
-        // Update items and count when an item is added
-        const updatedItems = [...items, item];
-        setItems(updatedItems);
-        setCount(updatedItems.length);
-      };
+    
     console.log(CategoryMenu[0])
-    const showCart = () => {
-       <Cart items={items}></Cart>
-      };
+
     return (
     
     //     <div className="resto-menu">
@@ -115,12 +108,12 @@ const Resto_menu=()=>{
         <div className="flex items-center justify-around"> 
         <h4 className="text-center px-14 py-3 m-0 text-5xl" >{resAPIData[resAPIData.length-1]?.card?.card?.name}</h4>
        
-        
+        <Link to={{ pathname: "/cart", state: { items } }}>
         <button>
           <p>Cart: {count}</p>
         
         </button>
-       
+        </Link>
        
         </div>
         <div className="m-auto gap-8 py-3 max-w-5xl flex justify-end search-menu" ><input type="text" className="search-menu" 
@@ -142,7 +135,7 @@ const Resto_menu=()=>{
         //     </div>
         //  <CategoryMenuComponent c={it} ></CategoryMenuComponent>
         //  </div>
-        <CategoryWiseMenu data={it}  addItemToCart={addItemToCart} />
+        <CategoryWiseMenu key={it.card.card.title} data={it}/>
     ))
     
    }

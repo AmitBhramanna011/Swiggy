@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import userLogin from "../utils/userLogin";
+import { useContext } from "react";
+import { useSelector } from "react-redux";
+
 
 const Header=()=>{
+    const {userName}=useContext(userLogin);
+    const cart=useSelector((store)=>store.cart.items)
+    console.log(cart);
     return(
         <div className="flex items-center justify-between heading">
             <div className="w-28 logo">
@@ -11,7 +18,8 @@ const Header=()=>{
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/cart">cart</Link></li>
+                    <li><Link to="/cart">cart- {cart.length}</Link></li>
+                    <li>{userName}</li>
                 </ul>
 
             </div>
