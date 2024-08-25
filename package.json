@@ -1,12 +1,17 @@
 {
+  "homepage": "https://AmitBhramanna011.github.io/Swiggy",
   "name": "react-project",
   "version": "1.0.0",
   "description": "project1",
-  "main": "index.js",
-  "scripts": {
-    "start": "parcel index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  
+"scripts": {
+  "start": "parcel index.html",
+  "build": "parcel build index.html",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
+  "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -18,6 +23,7 @@
     "redux": "^5.0.1"
   },
   "devDependencies": {
+    "gh-pages": "^6.1.1",
     "parcel": "^2.12.0",
     "postcss": "^8.4.38",
     "process": "^0.11.10",
