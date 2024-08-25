@@ -19,7 +19,7 @@ const Rest_card=(props)=>{
             <div className="flex gap-4 text-lg font-bold"><p>⭐{avgRating}   - </p>
             <p>{sla.deliveryTime} minutes</p>
             </div>
-            <p className=" text-base font-extralight">{cuisines.join(" , ")}</p>
+            <p className=" h-12 overflow-hidden text-base font-extralight">{cuisines.join(" , ")}</p>
             </div>
         </div>
         

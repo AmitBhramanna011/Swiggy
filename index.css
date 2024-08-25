@@ -99,6 +99,14 @@
     font-size: 30px;
 } */
 
+*{
+    
+}
+
+body {
+    overflow-y: scroll;
+    font-family: 'Poppins'
+}
 .skeleton-name {
     height: 18vh;
     align-items: center;
@@ -200,6 +208,28 @@
     transform: scale(0.9);
 }
 
+.remove{
+    background-color:  "#b02331";
+    color: "#ffffff";
+
+}
+
+ .resd{
+    width: 62rem;
+    background-color: white;
+
+
+/* background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%); */
+} 
+ .res{
+    width: 64rem;
+    /* border-color: transparent; */
+    margin: auto;
+    padding-bottom: 18px;
+    border: 1px;
+    border-radius: 33px;
+    background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%);
+} 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -22,6 +22,7 @@ const Resto_menu=()=>{
     //----------------------------------> const  resInfo=useRestaurents(id);.-----------------------------------------------//
 
     const [resAPIData,setresAPIData]=useState([]);
+    const [restoDetails,setrestoDetails]=useState([]);
     const [originalMenu,setoriginalMenu]=useState([]);
     const {id} =useParams();
     const [searchMenu,setsearchMenu]=useState("");
@@ -37,7 +38,8 @@ const Resto_menu=()=>{
     const  fetchMenu= async() =>{
         const menu= await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.61610&lng=73.72860&restaurantId="+id+"&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER");
         const menu_json=await menu.json();
-
+        {console.log(menu_json)}
+        setrestoDetails(menu_json)
         setresInfo(menu_json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
         
         setresAPIData(menu_json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards)
@@ -64,12 +66,13 @@ const Resto_menu=()=>{
         else setresInfo(searched_menu);
     }
     const NetworkStatus=useNetworkStatus();
+    console.log(resAPIData)
 
-   if(NetworkStatus===false) {
+    if(NetworkStatus===false) {
     return(
       <Offline></Offline>
     )
-   }
+    }
     
     if(!resInfo){
      return (
@@ -78,11 +81,12 @@ const Resto_menu=()=>{
     }
     console.log(resAPIData)
     const CategoryMenu=resAPIData.filter((it)=>
-        it.card?.["card"]?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+       it.card?.["card"]?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-    console.log(CategoryMenu)
+    console.log("--->",resAPIData)
     
-    console.log(CategoryMenu[0])
+    // console.log(CategoryMenu[0])
+
 
     return (
     
@@ -105,18 +109,28 @@ const Resto_menu=()=>{
     //     }
     // </div>
     <div>
-        <div className="flex items-center justify-around"> 
-        <h4 className="text-center px-14 py-3 m-0 text-5xl" >{resAPIData[resAPIData.length-1]?.card?.card?.name}</h4>
-       
-        <Link to={{ pathname: "/cart", state: { items } }}>
+        <div className="res">
+        <div className="resd border rounded-3xl p-6 mt-14 m-auto flex flex-col items-start justify-center gap-2"> 
+        <h4 className="text-center m-0 text-2xl font-extrabold" >{resAPIData[resAPIData.length-1]?.card?.card?.name}</h4>
+        <div className="flex gap-1">
+        <p>⭐ {restoDetails?.data?.cards[2]?.card?.card?.info?.avgRatingString}</p>
+        <p>({restoDetails?.data?.cards[2]?.card?.card?.info?.totalRatingsString})</p>
+        </div>
+        <p>{restoDetails?.data?.cards[2]?.card?.card?.info?.cuisines.join(" , ")}</p>
+        <p className="lowercase font-extrabold">{restoDetails?.data?.cards[2]?.card?.card?.info?.sla.slaString}</p>
+        <h4 className="text-center m-0 tracking-wider" > <span className="font-extrabold">Outlet  </span>{resAPIData[resAPIData.length-1]?.card?.card?.area}</h4>
+        <p className=" flex gap-2 text-center items-center" ><i class="bi bi-truck text-3xl"> </i>{restoDetails?.data?.cards[2]?.card?.card?.info?.feeDetails.message.replace(/<\/?b>/g, '')}</p>
+
+        
+        {/* <Link to={{ pathname: "/cart", state: { items } }}>
         <button>
           <p>Cart: {count}</p>
         
         </button>
-        </Link>
-       
+        </Link> */}
+       </div>
         </div>
-        <div className="m-auto gap-8 py-3 max-w-5xl flex justify-end search-menu" ><input type="text" className="search-menu" 
+        <div className="m-auto gap-8 py-3 max-w-5xl flex justify-end search-menu" ><input type="text" className="border border-gray-400 rounded-lg py-1 px-3 search-bar mx-2 search-menu" 
             value={searchMenu}
             placeholder={"Search in "+resAPIData[resAPIData.length-1]?.card?.card?.name}
             onChange={(e)=>{

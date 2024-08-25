@@ -24,7 +24,8 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const jsonData = await data.json();
-
+    console.log(jsonData)
+  
     setlistofRestaurent(
       jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -72,36 +73,40 @@ const Body = () => {
   }
   return (
     <div className="body">
-      <div className="flex justify-end filters">
-        <div>
+      <div className="flex justify-end filters gap-10 items-center">
+        <div className="">
           <input
+           
             type="text"
-            className="search-bar"
+            className="border border-gray-400 rounded-lg py-1 px-3 search-bar mx-2"
             // value={userName}
             placeholder="Search a restaurent"
             
             onChange={(e) => {
                 console.log(e.target.value);
                 setsearch_text(e.target.value);
-                search(e.target.value);
-                
+                search(e.target.value);                
             }}
           />
-          <button onClick={search}><i className="bi bi-search"></i></button>
+          <button onClick={()=>{
+            search(search_text)
+            }}><i className="bi bi-search"></i></button>
           
         </div>
         <button className="sort-btn" onClick={sort}>
-          sort by rating
+          
+          <i class="bi bi-sort-down text-4xl"></i>
         </button>
 
-        <label className="px-4">set username</label>
+        {/* <label className="px-4">set username</label>
         <input onChange={(e)=>
           setuserName(e.target.value)
-        }/>
+        }/> */}
         
         
 
       </div>
+      {console.log(filteredRestaurent)}
       <div className="flex flex-wrap gap-8 justify-between resto-cont">
         {filteredRestaurent.map((it) => (
           <Link key={it.info.id} 

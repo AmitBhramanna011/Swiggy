@@ -44,8 +44,8 @@ const appRouter=createBrowserRouter([
         element:<AppLayout/>,
         children:[
         {
-                path:"/",
-                element:<Body/>
+            path:"/",
+            element:<Body/>
         },
         {
             path:"/about",
@@ -60,7 +60,6 @@ const appRouter=createBrowserRouter([
             element:<Cart></Cart>
 
         },
-       
         {
             path:"/restaurents/:id",
             element: (<userLogin.Provider value={{userName:"Sanjay"}} ><Resto_menu/> </userLogin.Provider> ),
