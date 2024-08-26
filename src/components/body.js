@@ -124,6 +124,13 @@ const Body = () => {
            <Rest_card  resData={it} /> </Link>
         ))}
       </div>
+
+      <div className="flex justify-center pt-16 gap-4">
+        <p>Made with ❣️ by Amit Bhramanna</p>
+        <p><a target="_blank" href="https://www.instagram.com/amit_bhramanna17/"><i class="bi bi-instagram"></i></a></p>
+        <p><a target="_blank" href="https://github.com/amitbhramanna011"><i class="bi bi-github"></i></a></p>
+        <p><a target="_blank" href="https://www.linkedin.com/in/amit-bhramanna-063b7922a/"><i class="bi bi-linkedin"></i></a></p>
+      </div>
     </div>
   );
 };

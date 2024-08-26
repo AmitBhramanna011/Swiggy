@@ -230,6 +230,23 @@ body {
     border-radius: 33px;
     background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%);
 } 
+.fade-in-out {
+    animation: fadeInOut 3s ease-in-out infinite;
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

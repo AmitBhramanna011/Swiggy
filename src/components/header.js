@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 import logo from "../images/logo.png"
 import name from "../images/name.png"
+import CheckCorsExtension from "./CheckCorsExtension";
 
 
 
@@ -21,6 +22,7 @@ const Header=()=>{
             </div>
             <div className="pr-10 align-center nav-bar">
                 <ul className="flex gap-10 items-center"> 
+                    <li><CheckCorsExtension></CheckCorsExtension></li>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
