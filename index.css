@@ -245,6 +245,24 @@ body {
       opacity: 0;
     }
   }
+  .fixed-bottom {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: 500;
+    width: 64rem;
+    
+    border-radius: 5px;
+    background-color: #60b246; /* Set background color if needed */
+    padding: 13px 20px; /* Adjust padding as needed */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    z-index: 1000; /* Ensures it's on top of other content */
+  }
+  
   
   
 @tailwind base;

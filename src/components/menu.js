@@ -1,5 +1,5 @@
-
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Menu_card from "./menu_cards";
 import { Link, useParams } from "react-router-dom";
 import SkeletonMenu from "./skeleton_menu";
@@ -9,8 +9,10 @@ import Offline from "./offline";
 import CategoryWiseMenu from "./CategoryWiseMenu";
 import Cart from "./Cart";
 import Hi from "./hi"
+
 const Resto_menu=()=>{
     const [resInfo,setresInfo]=useState(null);
+    const cart=useSelector((store)=>store.cart.items)
 
     /*
     there is other way to write clean code 
@@ -173,7 +175,21 @@ const Resto_menu=()=>{
         </div>
 
     </div>
+    <div>
+      {cart.length>0 ? (
+        <div className="fixed-bottom">
+          <p> {cart.length} {cart.length==1 ?("item"):("items")} added</p>
+          <Link to="/cart"> <span className="px-3">View cart</span><i class="bi bi-bag"></i></Link>
+        </div>
+          
+        ) : (
+          <p ></p>
+        )}
     </div>
+
+    </div>
+
+  
 
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+// import { Link } from "react-router-dom";
 // import './App.css'; // Ensure this file contains the CSS from above
 
 const CheckCorsExtension = () => {
@@ -26,7 +27,8 @@ const CheckCorsExtension = () => {
     
       {isCorsEnabled === false && (
         <p className="text-red-600 font-semibold fade-in-out">
-          Hi User 😀 I am using a free API. Please download and enable the CORS extension to view my page.
+          Hi User 😀 I am using a free API. Please download and enable the CORS extension to view my page
+         <a className="px-2" href="https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en" target="_blank" ><i class="bi bi-box-arrow-up-right"></i></a>
         </p>
       )}
     </div>
