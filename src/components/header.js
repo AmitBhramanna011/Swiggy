@@ -23,7 +23,7 @@ const Header=()=>{
                 <ul className="flex gap-10 items-center"> 
                     <li><CheckCorsExtension></CheckCorsExtension></li>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
+                    {/* <li><Link to="/about">About</Link></li> */}
                     <li><Link to="/contact">Contact</Link></li>
                     <li><Link to="/cart"><i class="bi bi-bag"></i> {cart.length}</Link></li>
                     <li><i class="bi bi-person-fill cursor-pointer text-2xl"></i></li>
