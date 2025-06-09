@@ -40,7 +40,7 @@ const Resto_menu=()=>{
     const  fetchMenu= async() =>{
         const menu= await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.61610&lng=73.72860&restaurantId="+id+"&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER");
         const menu_json=await menu.json();
-        {console.log(menu_json)}
+        {console.log("resto", menu_json)}
         setrestoDetails(menu_json)
         setresInfo(menu_json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
         
@@ -88,6 +88,7 @@ const Resto_menu=()=>{
     console.log("--->",resAPIData)
     
     // console.log(CategoryMenu[0])
+    // console.log("bgghh",restoDetails?.data?.cards[2]?.card?.card?.info?.feeDetails)
 
 
     return (
@@ -110,6 +111,7 @@ const Resto_menu=()=>{
     //         ))            
     //     }
     // </div>
+    
     <div>
         <div className="res">
         <div className="resd border rounded-3xl p-6 mt-14 m-auto flex flex-col items-start justify-center gap-2"> 
@@ -121,7 +123,7 @@ const Resto_menu=()=>{
         <p>{restoDetails?.data?.cards[2]?.card?.card?.info?.cuisines.join(" , ")}</p>
         <p className="lowercase font-extrabold">{restoDetails?.data?.cards[2]?.card?.card?.info?.sla.slaString}</p>
         <h4 className="text-center m-0 tracking-wider" > <span className="font-extrabold">Outlet  </span>{resAPIData[resAPIData.length-1]?.card?.card?.area}</h4>
-        <p className=" flex gap-2 text-center items-center" ><i class="bi bi-truck text-3xl"> </i>{restoDetails?.data?.cards[2]?.card?.card?.info?.feeDetails.message.replace(/<\/?b>/g, '')}</p>
+        {/* <p className=" flex gap-2 text-center items-center" ><i class="bi bi-truck text-3xl"> </i>{restoDetails?.data?.cards[2]?.card?.card?.info?.feeDetails.message.replace(/<\/?b>/g, '')}</p> */}
 
         
         {/* <Link to={{ pathname: "/cart", state: { items } }}>
